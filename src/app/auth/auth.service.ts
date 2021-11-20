@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import {tap} from 'rxjs/operators'
  
 interface UserNameAvailable{
   available:boolean;
@@ -18,6 +20,12 @@ interface SignUpCredentials{
 export class AuthService {
 
   rootUrl ='https://api.angular-email.com/auth';
+
+  //community convention to put $ sign for Observable
+  //we are using here to store the status of userSignedIN and to let other
+  //component know that user is signedIn.
+  signedIn$ = new BehaviorSubject(false);
+
   constructor(private http:HttpClient) { }
 
 /**
@@ -37,5 +45,12 @@ export class AuthService {
    */
   signup(credentials:SignUpCredentials){
       return this.http.post<SignUpResponse>(`${this.rootUrl}/signup`, credentials)
+      .pipe(tap(()=>{
+        //tap operator skips error part.
+        //it runs only if we have successful response
+        this.signedIn$.next(true);
+      }))
   }
+
+
 }

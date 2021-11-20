@@ -1,1 +1,64 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container">
+      <!-- Navbar brand -->
+      <a class="navbar-brand me-2" href="https://mdbgo.com/">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY7lruyekWX8LU0tSSwN5t5TYuIJJ7ch7PHw&usqp=CAU"
+          height="16"
+          alt=""
+          loading="lazy"
+          style="margin-top: -1px;"
+        />
+      </a>
+  
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarButtonsExample"
+        aria-controls="navbarButtonsExample"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Zmail</a>
+          </li>
+        </ul>
+        <!-- Left links -->
+  
+        <div class="d-flex align-items-center">
+            <ng-container *ngIf="isSigned; else notSignedIn">
+                <button type="button" class="btn px-3 me-2">
+                    <a href="/signup" routerLinkActive="router-link-active" >Inbox</a>
+                </button>
+                <button type="button" class="btn btn-link me-3" >
+                    Sign Out
+                </button>
+            </ng-container>
+            <ng-template #notSignedIn>
+                <button type="button" class="btn px-3 me-2">
+                    <a href="/signup" routerLinkActive="router-link-active" >Signup</a>
+                    </button>
+                    <button type="button" class="btn btn-link me-3" >
+                        <a href="/signin" routerLinkActive="router-link-active" >Signin</a>
+                      
+                    </button>
+            </ng-template>
+        </div>
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
 <router-outlet></router-outlet>
