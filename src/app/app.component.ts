@@ -20,7 +20,7 @@ export class AppComponent implements OnInit{
 
     //check if user is signedIN
     this.authService.checkAuthStatus().subscribe((res:any)=>{
-      console.log("check auth res", res);
+      this.isSigned=res;
       
     })
   }
