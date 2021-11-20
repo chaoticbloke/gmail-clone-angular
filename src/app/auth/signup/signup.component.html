@@ -10,9 +10,11 @@
         <app-input label="password" [individualInput]="signupForm.get('password')"></app-input>
         <app-input label="confrim password" [individualInput]="signupForm.get('passwordConfirmation')"></app-input>
         <div class="text-danger" *ngIf="signupForm.get('password')?.touched && signupForm.get('passwordConfirmation')?.touched && signupForm?.errors?.passwordDontMatch" >Passwords don't match!</div>
+        <div class="text-danger" *ngIf="signupForm?.errors?.unknownError">Unknown error occurred!</div>
         <!-- submit button -->
         <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!signupForm.valid" [ngStyle]="{ cursor: !signupForm.valid ? 'not-allowed':'pointer'}">Submit</button>
       </form>
     </div>
   </div>
 </div>
+<div>form err Object :{{signupForm.errors |json}}</div>

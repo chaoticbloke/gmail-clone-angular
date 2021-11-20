@@ -16,8 +16,6 @@ export class InputComponent implements OnInit {
   }
 
   showErrors(){
-    console.log("individula object :", this.individualInput);
-    
     const {dirty, touched, errors}= this.individualInput;
     return touched || dirty && errors;
   }

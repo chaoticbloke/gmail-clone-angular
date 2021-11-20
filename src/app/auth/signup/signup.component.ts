@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
 import { MatchPassword } from '../validators/match-password';
 import { UniqueUsername } from '../validators/unique-username';
 
@@ -15,13 +16,42 @@ export class SignupComponent implements OnInit {
     password:new FormControl('',[Validators.required,Validators.minLength(4), Validators.maxLength(20)]),
     passwordConfirmation:new FormControl('',[Validators.required,Validators.minLength(4), Validators.maxLength(20)])
   },{validators:[this.customValidatorClass.validate]});
-  constructor(private customValidatorClass : MatchPassword, private uniqueUsername:UniqueUsername) { }
+
+
+  constructor(private customValidatorClass : MatchPassword,
+     private uniqueUsername:UniqueUsername
+     ,private authService:AuthService) { }
 
   ngOnInit(): void {
   }
   onSubmit(){
     console.log("form data :", this.signupForm.value);
-    
+
+    //we can pass object in subscribe({next,complete,error})
+    //complete not so useful, can be ignored
+    this.authService.signup(this.signupForm.value).subscribe({
+      next:(response)=>{
+        console.log("response from server", response);
+        //navigate to some other page/feature on signup
+      },
+      complete:()=>{
+        console.log("signup completed");
+        
+      },
+      error:(err)=>{
+         console.log("errors in signup", err);
+         if(err.status === 0)
+         this.signupForm.setErrors({noConnection:true})
+         else{
+           this.signupForm.setErrors({unknownError:true})
+         }
+      }
+    })
+    //this is another way we generally do
+    // this.authService.signup(this.signupForm.value).subscribe((data)=>{
+    //   console.log("response onSubmit from", data);
+      
+    // })
   }
 
 }
