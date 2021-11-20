@@ -1,1 +1,18 @@
-<p>signin works!</p>
+<div class="container">
+    <div class="row">
+      <h2 class="text-center text-capitalize">Wanna log in ?</h2>
+    </div>
+    <hr />
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <form [formGroup]="signinForm">
+           <app-input label="username" [individualInput]="signinForm.get('username')"></app-input>
+           <app-input label="password" [individualInput]="signinForm.get('password')"></app-input>
+            <div class="mb-3 form-group mt-2">
+                <div class="text-danger" *ngIf="signinForm?.errors?.credentialsNotExist">username does not exist!</div>
+                <button class="btn btn-success" [disabled]="!signinForm.valid" (click)="onSubmit()">Log In</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>

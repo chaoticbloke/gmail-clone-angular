@@ -18,6 +18,11 @@ interface SingnedInCheckAuthResponse{
   authencticated:boolean;
   username:string;
 }
+
+interface LoginCredentials{
+  username:string;
+  password:string;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -70,5 +75,14 @@ export class AuthService {
     .pipe(tap(()=>{
       this.signedIn$.next(false);
     }));
+  }
+/**
+ * For log in existing user
+ */
+  signin(credentials:LoginCredentials){
+    return this.http.post<LoginCredentials>(`${this.rootUrl}/signin`,credentials)
+     .pipe(tap((val)=>{
+       this.signedIn$.next(true)
+     }))
   }
 }
