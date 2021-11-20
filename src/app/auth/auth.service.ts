@@ -44,6 +44,8 @@ export class AuthService {
    * @param credentials 
    */
   signup(credentials:SignUpCredentials){
+    //{withCredentials:true} will be added via httpInterceptor so that cookies are stored in browser
+    //we can add as 3rd args while making http req
       return this.http.post<SignUpResponse>(`${this.rootUrl}/signup`, credentials)
       .pipe(tap(()=>{
         //tap operator skips error part.
@@ -52,5 +54,12 @@ export class AuthService {
       }))
   }
 
+  checkAuthStatus(){
+    return this.http.get(`${this.rootUrl}/signedin`)
+    .pipe(tap((res)=>{
+      console.log("auth status ",res);
+      
+    }))
+  }
 
 }
