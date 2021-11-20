@@ -1,0 +1,19 @@
+<div class="mb-3 form-group">
+  <label for="username" class="form-label">{{label}}</label>
+  <input [formControl]="individualInput" class="form-control" />
+<div *ngIf="showErrors()">
+  <div class="text-danger" *ngIf="individualInput.errors?.required">Value is required!</div>
+
+  <div class="text-danger" *ngIf="individualInput.errors?.minlength">Mininum required length is {{individualInput.errors.minlength.requiredLength}} characters!</div>
+ 
+  <div class="text-danger" *ngIf="individualInput.errors?.maxlength">length can not be more than {{individualInput.errors.maxlength.requiredLength}} characters!</div>
+
+  <div class="text-danger" *ngIf="individualInput.errors.notUniqueName">Username is taken!</div>
+
+  <div class="text-danger" *ngIf="individualInput.errors.pattern">Invalid format, should only be letters and numbers!</div>
+  <div class="text-danger" *ngIf="individualInput.errors.noConnection">Please connect to internet!</div>
+</div>
+  
+</div>
+         
+

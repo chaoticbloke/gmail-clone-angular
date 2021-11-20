@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <h2 class="text-center text-capitalize">Please fill the form</h2>
+  </div>
+  <hr />
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <form [formGroup]="signupForm">
+        <app-input label="username" [individualInput]="signupForm.get('username')"></app-input>
+        <app-input label="password" [individualInput]="signupForm.get('password')"></app-input>
+        <app-input label="confrim password" [individualInput]="signupForm.get('passwordConfirmation')"></app-input>
+        <div class="text-danger" *ngIf="signupForm.get('password')?.touched && signupForm.get('passwordConfirmation')?.touched && signupForm?.errors?.passwordDontMatch" >Passwords don't match!</div>
+        <!-- submit button -->
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!signupForm.valid" [ngStyle]="{ cursor: !signupForm.valid ? 'not-allowed':'pointer'}">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
