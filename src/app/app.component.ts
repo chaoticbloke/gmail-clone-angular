@@ -8,7 +8,7 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  isSigned=false;
+  isSigned:boolean=false;
    constructor(private authService:AuthService){}
   ngOnInit(): void {
     //another way we can subscribe through 'async' PIPE
@@ -20,8 +20,11 @@ export class AppComponent implements OnInit{
 
     //check if user is signedIN
     this.authService.checkAuthStatus().subscribe((res:any)=>{
-      this.isSigned=res;
+      this.isSigned=res.authenticated;
       
     })
+
+    console.log("isSignedIn in App", this.isSigned);
+    
   }
 }

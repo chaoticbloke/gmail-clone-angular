@@ -3,7 +3,7 @@
     <!-- Container wrapper -->
     <div class="container">
       <!-- Navbar brand -->
-      <a class="navbar-brand me-2" href="https://mdbgo.com/">
+      <a class="navbar-brand me-2" href="#">
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY7lruyekWX8LU0tSSwN5t5TYuIJJ7ch7PHw&usqp=CAU"
           height="16"
@@ -35,13 +35,12 @@
           </li>
         </ul>
         <!-- Left links -->
-  
         <div class="d-flex align-items-center">
             <ng-container *ngIf="isSigned; else notSignedIn">
                 <button type="button" class="btn px-3 me-2">
-                    <a href="/signup" routerLinkActive="router-link-active" >Inbox</a>
+                    <a routerLink="/signup" routerLinkActive="router-link-active" >Inbox</a>
                 </button>
-                <button type="button" class="btn btn-link me-3" >
+                <button type="button" class="btn btn-link me-3" routerLink="/signout">
                     Sign Out
                 </button>
             </ng-container>
