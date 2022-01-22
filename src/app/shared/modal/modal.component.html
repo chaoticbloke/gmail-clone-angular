@@ -1,10 +1,11 @@
-<div class="modal d-block" tabindex="-1">
-    <div class="modal-dialog">
+<div (click)="onDismissClick()" class="modal" tabindex="-1" [ngClass]="isClicked ?'d-block':'d-none'">
+    <div (click)="$event.stopPropagation()"  class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Modal title</h5>
           <button
             type="button"
+            (click)="onDismissClick()"
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"

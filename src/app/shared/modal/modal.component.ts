@@ -17,8 +17,9 @@ export class ModalComponent implements OnInit,OnDestroy {
   ngOnDestroy(): void {
    this.el.nativeElement.remove();
   }
-  
+  isClicked=true
   onDismissClick(){
+    this.isClicked=false
     this.dismiss.emit();
   }
 
