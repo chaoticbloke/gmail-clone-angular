@@ -14,27 +14,27 @@ export class EmailShowComponent implements OnInit {
 
   constructor(private emailService:EmailService,private activatedRoute:ActivatedRoute,private router:Router) { 
     //get resolver's data
-    console.log("resolvers data",this.activatedRoute.snapshot.data);
+  this.activatedRoute.data.subscribe(res=>{
+    console.log("resolver res in component", res);
+    const {emailDetails} = res;
+    this.email = emailDetails;
+  })
     
   }
 
   ngOnInit(): void {
-    console.log("activated route", this.activatedRoute.params.subscribe((data)=>{
-      const {id}= data;
-    this.getEmailDetialsById(id);
-    }));
-    
+  
    
   }
   getEmailDetialsById(id:string){
-
-    this.emailService.getEmailDetailsById(id).subscribe((data)=>{
-      this.email=data;
-    },(err)=>{
-      //if there is incorrect id , navigate to not found component
-      this.router.navigateByUrl(`/inbox/not-found`)
-    });
-    console.log("inside email show", this.email);
+ // as we are getting data from the resolver
+    // this.emailService.getEmailDetailsById(id).subscribe((data)=>{
+    //   this.email=data;
+    // },(err)=>{
+    //   //if there is incorrect id , navigate to not found component
+    //   this.router.navigateByUrl(`/inbox/not-found`)
+    // });
+    // console.log("inside email show", this.email);
     
   }
 

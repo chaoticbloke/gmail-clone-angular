@@ -10,12 +10,14 @@ const routes: Routes = [
   {
     path:'', component:InboxHomeComponent,
     children:[
-      {path:'not-found', component:NotFoundComponent},
       {path:'',component:PlaceholderComponent},
+      {path:'not-found', component:NotFoundComponent},
       {
         path:':id', component:EmailShowComponent,
         resolve:{
           //emailDetails is data and source of this data is EmailResolverService
+          //makes sure we get this data before displaying of EmailShowComponent on screen
+          //access this data in `EmailShowComponent` and it's(resolver data) available in ActivatedRoute
           emailDetails:EmailResolverService
         }
       },

@@ -6,7 +6,7 @@ import {filter, tap} from "rxjs/operators"
 @Injectable()
 export class AuthHtppInterceptor implements HttpInterceptor{
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log(req)
+        //console.log(req)
         const modifiedReq = req.clone({withCredentials:true})
       
         return next.handle(modifiedReq).pipe(
