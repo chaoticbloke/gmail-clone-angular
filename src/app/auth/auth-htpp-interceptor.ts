@@ -15,11 +15,11 @@ export class AuthHtppInterceptor implements HttpInterceptor{
             //in case if we want only to flow sent request throw next of pipe()
             (tap((res:any)=>{
            if(res.type === HttpEventType.Sent){
-               console.log("Request was sent to server",res);
+            //    console.log("Request was sent to server",res);
                
            }
            if(res.type ===HttpEventType.Response){
-               console.log("Got response from Server/API",res);
+            //    console.log("Got response from Server/API",res);
                
            }
             

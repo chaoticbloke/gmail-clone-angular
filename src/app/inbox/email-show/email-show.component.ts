@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { EmailDetails } from 'src/app/shared/email';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EmailDetails } from 'src/app/shared/EmailDetails';
 import { EmailService } from '../email.service';
 
 @Component({
@@ -12,7 +12,11 @@ export class EmailShowComponent implements OnInit {
 
   email:EmailDetails;
 
-  constructor(private emailService:EmailService,private activatedRoute:ActivatedRoute) { }
+  constructor(private emailService:EmailService,private activatedRoute:ActivatedRoute,private router:Router) { 
+    //get resolver's data
+    console.log("resolvers data",this.activatedRoute.snapshot.data);
+    
+  }
 
   ngOnInit(): void {
     console.log("activated route", this.activatedRoute.params.subscribe((data)=>{
@@ -26,6 +30,9 @@ export class EmailShowComponent implements OnInit {
 
     this.emailService.getEmailDetailsById(id).subscribe((data)=>{
       this.email=data;
+    },(err)=>{
+      //if there is incorrect id , navigate to not found component
+      this.router.navigateByUrl(`/inbox/not-found`)
     });
     console.log("inside email show", this.email);
     
