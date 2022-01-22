@@ -1,0 +1,14 @@
+<ng-container *ngIf="email;else showDefaultText">
+    <div class="card border-success mb-3" style="max-width: 18rem;">
+        <div class="card-header bg-transparent border-success">{{email?.subject}}</div>
+        <div class="card-body text-success">
+          <h5 class="card-title" [innerHtml]="email?.html"></h5>
+          <p class="card-text">{{email?.text}}</p>
+        </div>
+        <div class="card-footer bg-transparent border-success">{{email?.from}}</div>
+      </div>
+    
+</ng-container>
+<ng-template #showDefaultText>
+    Select a mail to see the Details.
+</ng-template>

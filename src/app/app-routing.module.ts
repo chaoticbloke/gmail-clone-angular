@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignoutComponent } from './auth/signout/signout.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
   },
   {path:'signout', component:SignoutComponent},
   {path:'signup', component:SignupComponent},
-  {path:'',component:SigninComponent}
+  {path:'',component:SigninComponent},
+  {path:'**', component:PageNotFoundComponent}
 ];
 
 @NgModule({
