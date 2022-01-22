@@ -2,3 +2,6 @@
     background: white;
     color: black;
 }
+a:hover{
+    cursor: pointer;
+}

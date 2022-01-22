@@ -22,7 +22,7 @@ email:EmailDetails;
       return this.emailService.getEmailDetailsById(id)
       .pipe(catchError((err)=>{
         //if user navigates to wrong url id for email navigate to not-found
-        //return empty obser to just make happy typescript
+        //return EMPTY obser to just make happy typescript
         this.router.navigateByUrl("/inbox/not-found")
           return EMPTY;
       }))

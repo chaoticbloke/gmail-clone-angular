@@ -28,7 +28,7 @@ export class EmailIndexComponent implements OnInit {
     
     //use child routes :id ; where id is wildcard param
     this.idEmail.emit(id);
-   this.router.navigateByUrl(`/inbox/${id}`)
+   //this.router.navigateByUrl(`/inbox/${id}`)
    
   }
 }

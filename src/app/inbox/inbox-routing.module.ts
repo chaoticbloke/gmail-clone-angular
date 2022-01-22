@@ -10,8 +10,6 @@ const routes: Routes = [
   {
     path:'', component:InboxHomeComponent,
     children:[
-      {path:'',component:PlaceholderComponent},
-      {path:'not-found', component:NotFoundComponent},
       {
         path:':id', component:EmailShowComponent,
         resolve:{
@@ -21,6 +19,9 @@ const routes: Routes = [
           emailDetails:EmailResolverService
         }
       },
+      {path:'not-found', component:NotFoundComponent},
+      {path:'', component:PlaceholderComponent}
+
     ]
     
   }

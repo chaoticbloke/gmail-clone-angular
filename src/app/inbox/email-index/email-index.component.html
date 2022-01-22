@@ -1,6 +1,9 @@
+<a routerLink="#" class="list-group-item text-center rounded list-group-item-action ">
+  <i class="fas fa-plus-square text-success"></i> Compose
+</a>
 <div class="list-group" *ngFor="let email of emails">
   <!-- note routerLink for id ,appends id in URL -->
-   <a (click)="showEmail(email.id)" [routerLink]="email.id" class="list-group-item list-group-item-action" aria-current="true">
+   <a (click)="showEmail(email.id)" [routerLink]="email.id" class="list-group-item list-group-item-action rounded" aria-current="true">
      <div class="d-flex w-100 justify-content-between">
        <h5 class="mb-1">{{email.subject}}</h5>
        <small class="text-muted">3 days ago</small>
