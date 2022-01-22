@@ -15,17 +15,10 @@ interface EmailDetails{
 })
 export class InboxHomeComponent implements OnInit {
 
-  email:EmailDetails
   constructor(private emailService:EmailService) { }
 
   ngOnInit(): void {
   }
+  showModal=false
 
-  getEmailDetialsById(id:string){
-
-    this.emailService.getEmailDetailsById(id).subscribe((data)=>{
-      this.email=data;
-    });
-    
-  }
 }
